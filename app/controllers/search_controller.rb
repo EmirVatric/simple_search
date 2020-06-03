@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-  before_action :authenticate_user!
+  include Matchable
 
   def index
   end
@@ -14,6 +14,6 @@ class SearchController < ApplicationController
 
   private
   def search_params
-    params.permit(:search)
+    params.permit(:search, :activity => [])
   end
 end

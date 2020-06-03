@@ -7,7 +7,7 @@ document.addEventListener("turbolinks:load", function () {
   const welcomeScreen = document.getElementById("index-welcome");
   const articlesContainer = document.getElementById("index-articles-container");
   const token = document.getElementsByName("csrf-token")[0].content;
-
+  let activity = [Date.now()];
   const updateDom = (data) => {
     articlesContainer.innerHTML = "";
 
@@ -22,14 +22,21 @@ document.addEventListener("turbolinks:load", function () {
   };
 
   const getData = helpers.debounce(async () => {
+    activity.push(searchBox.value);
     const result = await http.post(
-      { search: searchBox.value.trim().replace(/[?]/g, "") },
+      {
+        search: searchBox.value.trim().replace(/[?.!]/g, "").toLowerCase(),
+        activity: activity,
+      },
       token
     );
+    console.log(activity);
     updateDom(result);
   }, 700);
 
-  searchBox.addEventListener("input", function () {
-    getData();
+  searchBox.addEventListener("input", function (event) {
+    if (event.which != 8) {
+      searchBox.value.trim().length > 0 ? getData() : (activity = [Date.now()]);
+    }
   });
 });

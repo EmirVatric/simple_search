@@ -33,6 +33,8 @@ const displayWelcomeScreen = (welcomeScreen, articles) => {
   articles.classList.add("display-none");
 };
 
-exports.appendResults = appendResults;
-exports.appendError = appendError;
-exports.displayWelcomeScreen = displayWelcomeScreen;
+module.exports = {
+  appendResults,
+  appendError,
+  displayWelcomeScreen,
+};
