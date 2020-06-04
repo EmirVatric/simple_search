@@ -31,7 +31,7 @@ document.addEventListener("turbolinks:load", function () {
       token
     );
     updateDom(result);
-  }, 700);
+  }, 500);
 
   searchBox.addEventListener("input", function (event) {
     if (event.which != 8) {
