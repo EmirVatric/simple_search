@@ -1,7 +1,26 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'net/http'
+require 'uri'
+require 'json'
+
+uri = URI.parse("http://newsapi.org/v2/everything?q=bitcoin&from=2020-05-04&sortBy=publishedAt&apiKey=7ddd0e045b2c4804846a868535a6c376")
+request = Net::HTTP::Get.new(uri)
+request.content_type = "application/json"
+
+
+@response = Net::HTTP.start(uri.hostname, uri.port) do |http|
+  http.request(request)
+end
+
+info = @response.body 
+
+info.force_encoding("utf-8")
+
+File.write('article.json', info)
+
+file = File.read('article.json')
+
+articles = JSON.load(file)['articles']
+
+articles.each do |article|
+  Article.create(title: article["title"], content: article["description"])
+end

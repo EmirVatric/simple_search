@@ -13,8 +13,8 @@ class SearchService
   def filter
     @increment_query.nil? ? create_new_query : increment_query
     
-    remove_subqueries if new_query? && part_of_session?
-    decrement_query_counter if new_query? && !part_of_session? && !@old_query.nil?
+    remove_subqueries if @increment_query.nil? && part_of_session?
+    decrement_query_counter if @increment_query.nil? && !part_of_session? && !@old_query.nil?
     
     load_results
   end
@@ -32,10 +32,6 @@ class SearchService
     if !@old_query.nil?
       @old_query.counter == 1
     end
-  end
-
-  def new_query?
-    @increment_query.nil?
   end
 
   def decrement_query_counter
