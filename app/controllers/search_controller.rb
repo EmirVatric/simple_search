@@ -12,7 +12,7 @@ class SearchController < ApplicationController
   private
 
   def search_service
-    @search_service ||= SearchService.new(permitted_params)
+    @search_service ||= SearchService.new(permitted_params, request.remote_ip)
   end
 
   def permitted_params
