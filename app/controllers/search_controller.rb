@@ -12,7 +12,7 @@ class SearchController < ApplicationController
   private
 
   def search_service
-    @search_service ||= SearchService.new(permitted_params, request.remote_ip)
+    @search_service ||= SearchService.new(permitted_params, "#{request.remote_ip}".gsub(/[^0-9A-Za-z]/, '').to_i)
   end
 
   def permitted_params
