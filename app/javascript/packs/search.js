@@ -12,7 +12,6 @@ document.addEventListener("turbolinks:load", function () {
 
   const updateDom = (data) => {
     articlesContainer.innerHTML = "";
-
     welcomeScreen.classList.add("display-none");
     articlesContainer.classList.remove("display-none");
 
@@ -33,7 +32,6 @@ document.addEventListener("turbolinks:load", function () {
       },
       token
     );
-    console.log(activity);
     updateDom(result);
   }, 700);
 

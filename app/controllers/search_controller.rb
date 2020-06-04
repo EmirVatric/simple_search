@@ -3,18 +3,20 @@ class SearchController < ApplicationController
   end
 
   def search
-    results = Article.search(search_params[:search]).limit(6)
-    errors = []
-    
-    Filter.new(search_params, results.empty? ? false : true).check_query
-  
+    result = search_service.filter
+    p ENV['HTTP_X_FORWARDED_FOR']
+    return render_error result[:error_code] if result[:error_code]
 
-    errors << "Sorry, we found 0 results for '#{search_params[:search]}'" if results.empty?
-    render json: {data: results, errors: errors}, status: 200
+    render json: result[:data], status: :ok
   end
 
   private
-  def search_params
-    params.permit(:search, :user_id, :activity => [])
+
+  def search_service
+    @search_service ||= SearchService.new(permitted_params)
+  end
+
+  def permitted_params
+    params.permit(:search, :user_id, activity: [])
   end
 end
