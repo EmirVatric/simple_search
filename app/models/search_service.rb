@@ -2,7 +2,7 @@ class SearchService
   def initialize(data)
     @query = data[:search]
     @activity = data[:activity]
-    @user_id = data[:user_id]
+    @user_id = request.remote_ip
     @found = true
     @activity_id = data[:activity].first
     @old_query = Query.find_by(act_identifier: @activity.first)

@@ -7,7 +7,6 @@ document.addEventListener("turbolinks:load", function () {
   const welcomeScreen = document.getElementById("index-welcome");
   const articlesContainer = document.getElementById("index-articles-container");
   const token = document.getElementsByName("csrf-token")[0].content;
-  let ip = 123123123;
   let activity = [Date.now()];
 
   const updateDom = (data) => {
@@ -28,7 +27,6 @@ document.addEventListener("turbolinks:load", function () {
       {
         search: searchBox.value.trim().replace(/[?.!]/g, "").toLowerCase(),
         activity: activity,
-        user_id: ip,
       },
       token
     );
