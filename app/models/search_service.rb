@@ -1,6 +1,6 @@
 class SearchService
   def initialize(data, ip)
-    @query = data[:search]
+    @query = data[:search].gsub(/[^0-9A-Za-z ]/, '')
     @activity = data[:activity]
     @user_id = ip
     @found = true
