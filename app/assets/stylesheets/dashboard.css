@@ -2,6 +2,42 @@
   margin: 10px auto;
   max-width: 1300px;
   padding: 0 10px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.dashboard-wrapper ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+}
+
+.dashboard-wrapper li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  height: 30px;
+}
+
+.dashboard-wrapper li:last-child {
+  border: none;
+}
+
+.table-head {
+  background: lightgray;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.search-counter {
+  width: 10%;
+  text-align: center;
+}
+
+.search-query {
+  width: 90%;
+  text-align: center;
 }
 
 .numbers-wrapper {
@@ -22,8 +58,13 @@
 .most-searched {
   width: 70%;
   margin-left: 10px;
-  background: lightgray;
+  padding: 5px;
+  background: rgb(235, 235, 235);
   border-radius: 5px;
+}
+
+.chart-wrapper {
+  height: 90%;
 }
 
 .numbers-analytic {
@@ -42,8 +83,6 @@
 .numbers-analytic > .header {
   text-transform: uppercase;
   font-size: 14px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .searches-wrapper {
