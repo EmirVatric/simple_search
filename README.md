@@ -12,41 +12,24 @@
   </a>
 </p>
 
-Welcome to the [Multiverse](https://multiverse-students.herokuapp.com/) codebase. We are so excited to have you.
-With your help, we can build out Multiverse to be more stable and better for our
-community.
+Welcome to the [Simple Search](https://helpjuice-simple-search.herokuapp.com/) codebase. We are so excited to have you.
 
-## What is multiverse?
+## What is Simple Search?
+Simple search is an open simple text metching software, which saves users searches and displays them in analytics per user bases.
 
-[Multiverse](https://multiverse-students.herokuapp.com/) is a platform where [Microvese](https://www.microverse.org/) students and software developers
-write articles, take part in discussions, and build their student profiles.
-We value supportive and constructive dialogue in the pursuit of great code and
-career growth for all members. The ecosystem spans from beginner to advanced
-developers, and all are welcome to find their place within our community. ❤️
+## How does it work?
 
-## Table of Contents
+Simple search will save queries from users session, session is started from the moment that user starts typing his query until he changes the page (goes to an article or analytics) or clears the input box. In cases where user executes more than one valid queries in same session ('How to buy product', 'How to sell product') we will save bouth of those queries. In cases when user is typing slow and is sending multiple requests in single query all other queries will be deleted.
 
-- [Contributing](#contributing)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation Documentation](#installation-documentation)
+Every query will have session identification saved as well as used id (that is comming from users IP address), counter on how many times did user make a same query (here i tought about saving every query and not incrementing them so that I can get when the query was created), boolean on wether we ware able to find the results.
 
-## Contributing
-
-We encourage you to contribute to this repo! Please check out the
-[Contributing to multiverse guide](CONTRIBUTING.md) for guidelines about how to
-proceed.
+Every user has access to his analytics board which will show total nubmer of ther searches, number of successful as well as unsuccessful searches, and articles count. Also in bottom section user can see his most searched terms, successful and unsuccessful ones. Graph will show number of searches per minute, I understand that it is little bit redundant but since this app will be used and tested in shorter time interval I wanted to plot some sort of graph for you to see.
 
 ## Getting Started
 
-This section provides a high-level quick start guide. If you're looking for the
-installation guide, you'll want to refer to
-our complete Developer Documentation.
+This section provides a quick start guide.
 
-We run on a [Rails](https://rubyonrails.org/) backend, and we are running a [React](https://reactjs.org/) frontend.
-
-A more complete overview of our stack is available in
-our docs.
+We run on a full-stack [Rails](https://rubyonrails.org/) application.
 
 ### Prerequisites
 
@@ -56,28 +39,22 @@ our docs.
 - [Yarn](https://yarnpkg.com/): please refer to their
   [installation guide](https://yarnpkg.com/en/docs/install).
 - [PostgreSQL](https://www.postgresql.org/) 9.4 or higher.
-- [Redis](https://redis.io/)
 
 ### Installation Documentation
 
-1. Fork our repo from https://github.com/multiverse-students/Multiverse.
-2. In the console, download a copy of your forked repo with `git clone https://github.com/your_username/Multiverse.git` where `your_username` is your GitHub username.
-3. Enter the new **multiverse** directory with `cd multiverse`.
-4. Steps to install gems:
-   - You may need to first run `bundle install` if you have older gems in your environment from previous Rails work. If you get an error message like `Your Ruby version is 2.x.x, but your Gemfile specified 2.4.4` then you need to install the ruby version 2.6.0 using `rvm` or `rbenv`.
-     - Using **rvm**: `rvm install 2.6.0` followed by `rvm use 2.6.0`
-     - Using **rbenv**: `rbenv install 2.6.0` followed by `rbenv local 2.6.0`
-   - Install gems with `bundle install --without production` from the rails root folder, to install the gems you'll need, excluding those needed only in production.
-5. Run `rails db:create` followed by `rails db:migrate` to set up the database
-6. Install static assets (like external javascript libraries, fonts) with `yarn install`
-7. Run `rails s` to start the server and `bin/webpack-dev-server` to compile the javascript
-
-## Code of Conduct
-
-Please read and abide by our [Code of Conduct](); our community aspires to be a respectful place both during online and in-­person interactions.
+1. Clone the repo with `git clone git@github.com:EmirVatric/simple_search.git`.
+2. Steps to install gems:
+   - You may need to first run `bundle install` if you have older gems in your environment from previous Rails work. If you get an error message like `Your Ruby version is 2.x.x, but your Gemfile specified 2.6.5` then you need to install the ruby version 2.6.5 using `rvm` or `rbenv`.
+     - Using **rvm**: `rvm install 2.6.0` followed by `rvm use 2.6.5`
+     - Using **rbenv**: `rbenv install 2.6.0` followed by `rbenv local 2.6.5`
+   - Install gems with `bundle install` from the rails root folder, to install the gems you'll need.
+3. Run `rails db:create` followed by `rails db:migrate` and `rails db:seed` to set up the database
+4. Install static assets (like external javascript libraries, fonts) with `yarn install`
+5. Run `rails s` to start the server.
+6. Run `rspec` to run tests
 
 <br>
 
 <p align="center">
-  <strong>Happy Coding</strong> ❤️
+  <strong>Happy Testing</strong> ❤️
 </p>
