@@ -45,8 +45,8 @@ We run on a full-stack [Rails](https://rubyonrails.org/) application.
 1. Clone the repo with `git clone git@github.com:EmirVatric/simple_search.git`.
 2. Steps to install gems:
    - You may need to first run `bundle install` if you have older gems in your environment from previous Rails work. If you get an error message like `Your Ruby version is 2.x.x, but your Gemfile specified 2.6.5` then you need to install the ruby version 2.6.5 using `rvm` or `rbenv`.
-     - Using **rvm**: `rvm install 2.6.0` followed by `rvm use 2.6.5`
-     - Using **rbenv**: `rbenv install 2.6.0` followed by `rbenv local 2.6.5`
+     - Using **rvm**: `rvm install 2.6.5` followed by `rvm use 2.6.5`
+     - Using **rbenv**: `rbenv install 2.6.5` followed by `rbenv local 2.6.5`
    - Install gems with `bundle install` from the rails root folder, to install the gems you'll need.
 3. Run `rails db:create` followed by `rails db:migrate` and `rails db:seed` to set up the database
 4. Install static assets (like external javascript libraries, fonts) with `yarn install`
