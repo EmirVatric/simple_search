@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Query, type: :model do
-  subject { described_class.new(user_id: 1234567, act_identifier: 123456, query: 'New query', found: true ) }
+  subject { described_class.new(user_id: 1_234_567, act_identifier: 123_456, query: 'New query', found: true) }
 
   context 'validation test' do
     it 'is valid with valid attributes' do
@@ -12,7 +14,7 @@ RSpec.describe Query, type: :model do
       subject.user_id = nil
       expect(subject).to_not be_valid
     end
-    
+
     it 'is not valid without an activity identification' do
       subject.act_identifier = nil
       expect(subject).to_not be_valid

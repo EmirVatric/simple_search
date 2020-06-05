@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
   subject { described_class.new(title: 'This is a test article', content: 'This is a test content') }
-  
+
   context 'validation test' do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid

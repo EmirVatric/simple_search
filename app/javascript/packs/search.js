@@ -13,7 +13,6 @@ document.addEventListener("turbolinks:load", function () {
     articlesContainer.innerHTML = "";
     welcomeScreen.classList.add("display-none");
     articlesContainer.classList.remove("display-none");
-
     searchBox.value.length === 0
       ? dom.displayWelcomeScreen(welcomeScreen, articlesContainer)
       : data.errors.length > 0

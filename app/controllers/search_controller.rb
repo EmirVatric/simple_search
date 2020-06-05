@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
 class SearchController < ApplicationController
   before_action :current_user
-  
-  def index
-  end
+
+  def index; end
 
   def search
     result = search_service.filter
-    return render_error(result[:error_code], result[:error_message]) if result[:error_code]
+    if result[:error_code]
+      return render_error(result[:error_code], result[:error_message])
+    end
 
     render json: result[:data], status: :ok
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SearchService
   def initialize(data, ip)
     @query = data[:search].gsub(/[^0-9A-Za-z ]/, '')
@@ -12,31 +14,32 @@ class SearchService
   def filter
     @results = Article.search(@query).limit(6)
     @increment_query.nil? ? create_new_query : increment_query
-    
+
     remove_subqueries if @increment_query.nil? && part_of_session?
     decrement_query_counter if !part_of_session? && !@query_form_activity.nil?
-    
-    @simular_queries.each{|query| query.delete if included_and_shorter(query.query)}
+
+    @simular_queries.each do |query|
+      query.delete if included_and_shorter(query.query)
+    end
     return_results
   end
 
   private
 
   def included_and_shorter(query)
-    @query.include?(query) && query.length < @query.length if !@simular_queries.blank?
+    unless @simular_queries.blank?
+      @query.include?(query) && query.length < @query.length
+    end
   end
 
   def return_results
-    return @results.blank? ? 
-    {error_message: ["We were not able to find any results for search '#{@query}'"], error_code: 404} 
-    : {data: {data: @results, errors: @errors}}
-
+    @results.blank? ?
+    { error_message: ["We were not able to find any results for search '#{@query}'"], error_code: 404 }
+    : { data: { data: @results, errors: [] } }
   end
 
   def part_of_session?
-    if !@query_form_activity.nil?
-      @query_form_activity.counter == 1
-    end
+    @query_form_activity.counter == 1 unless @query_form_activity.nil?
   end
 
   def decrement_query_counter
@@ -52,7 +55,7 @@ class SearchService
   end
 
   def increment_query
-    @increment_query.update(act_identifier: @activity_id, counter: @increment_query.counter+1)
+    @increment_query.update(act_identifier: @activity_id, counter: @increment_query.counter + 1)
   end
 
   def remove_subqueries

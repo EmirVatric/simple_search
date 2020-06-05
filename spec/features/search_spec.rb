@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Search', type: :feature do
@@ -11,10 +13,9 @@ RSpec.describe 'Search', type: :feature do
   end
 
   scenario 'user gets the results by searching the title' do
-    page.driver.browser.post('/search', {
-      search: 'new',
-      activity: [32423423, 'new'],
-    })
+    page.driver.browser.post('/search',
+                             search: 'new',
+                             activity: [32_423_423, 'new'])
 
     response = JSON.parse(page.driver.response.body)
 
@@ -23,10 +24,9 @@ RSpec.describe 'Search', type: :feature do
   end
 
   scenario 'user gets the results by searching the content' do
-    page.driver.browser.post('/search', {
-      search: 'new',
-      activity: [32423423, 'content'],
-    })
+    page.driver.browser.post('/search',
+                             search: 'new',
+                             activity: [32_423_423, 'content'])
 
     response = JSON.parse(page.driver.response.body)
 
@@ -35,10 +35,9 @@ RSpec.describe 'Search', type: :feature do
   end
 
   scenario 'user gets the error if 0 articles found' do
-    page.driver.browser.post('/search', {
-      search: 'hello',
-      activity: [32423423, 'hello'],
-    })
+    page.driver.browser.post('/search',
+                             search: 'hello',
+                             activity: [32_423_423, 'hello'])
 
     response = JSON.parse(page.driver.response.body)
 
