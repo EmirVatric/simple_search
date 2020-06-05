@@ -15,7 +15,7 @@ RSpec.describe 'Search', type: :feature do
   scenario 'user gets the results by searching the title' do
     page.driver.browser.post('/search',
                              search: 'new',
-                             activity: [32_423_423, 'new'])
+                             session_identifier: 32_423_423)
 
     response = JSON.parse(page.driver.response.body)
 
@@ -26,7 +26,7 @@ RSpec.describe 'Search', type: :feature do
   scenario 'user gets the results by searching the content' do
     page.driver.browser.post('/search',
                              search: 'new',
-                             activity: [32_423_423, 'content'])
+                             session_identifier: 32_423_423)
 
     response = JSON.parse(page.driver.response.body)
 
@@ -37,7 +37,7 @@ RSpec.describe 'Search', type: :feature do
   scenario 'user gets the error if 0 articles found' do
     page.driver.browser.post('/search',
                              search: 'hello',
-                             activity: [32_423_423, 'hello'])
+                             session_identifier: 32_423_423)
 
     response = JSON.parse(page.driver.response.body)
 

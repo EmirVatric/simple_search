@@ -7,10 +7,10 @@ RSpec.describe 'Analitycs', type: :feature do
     @article = Article.create(title: 'New test article', content: 'New test article content')
     page.driver.browser.post('/search',
                              search: 'new',
-                             activity: [32_423_423, 'new'])
+                             session_identifier: 32_423_423)
     page.driver.browser.post('/search',
                              search: 'hello',
-                             activity: [324_234_223, 'hello'])
+                             session_identifier: 324_234_223)
   end
 
   scenario 'user can see number of seraches' do
