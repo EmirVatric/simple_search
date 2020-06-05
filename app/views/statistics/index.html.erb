@@ -1,7 +1,7 @@
 <div class="dashboard-wrapper">
   <div class='numbers-wrapper'>
     <div class="number-of-searches">
-      <div class='totlas-searches numbers-analytic'>
+      <div class='total-searches numbers-analytic'>
         <div class='header'>
           Searches
         </div>
@@ -43,7 +43,7 @@
   <div class='searches-wrapper'>
     <div class="found-searches">
        <ul>
-        <li class='table-head'><div class='search-counter'>Count</div><div class="search-query">Search Query</div></li>
+        <li class='table-head'><div class='search-counter'>Count</div><div class="search-query">Successfull Search Query</div></li>
         <% @successfull_searches.reverse.take(7).each do |search|%>
           <li><div class='search-counter'><%= search.counter%></div><div class='search-query'><%= search.query%></div></li>
         <% end %>
@@ -51,7 +51,7 @@
     </div>
     <div class="not-found-searches">
       <ul>
-        <li class='table-head'><div class='search-counter'>Count</div><div class="search-query">Search Query</div></li>
+        <li class='table-head'><div class='search-counter'>Count</div><div class="search-query">Unsuccessfull Search Query</div></li>
         <% @unsuccessfull_searches.reverse.take(7).each do |search|%>
           <li><div class='search-counter'><%= search.counter%></div><div class='search-query'><%= search.query%></div></li>
         <% end %>

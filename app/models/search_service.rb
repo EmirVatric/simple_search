@@ -7,7 +7,6 @@ class SearchService
     @query_form_activity = Query.find_by(act_identifier: @activity.first)
     @increment_query = Query.find_by(user_id: @user_id, query: @query)
     @simular_queries = Query.search(@query).user(@user_id)
-    @errors = []
   end
 
   def filter
@@ -29,7 +28,7 @@ class SearchService
 
   def return_results
     return @results.blank? ? 
-    {error_message: ["We ware not able to find results for search '#{@query}'"], error_code: 404} 
+    {error_message: ["We were not able to find any results for search '#{@query}'"], error_code: 404} 
     : {data: {data: @results, errors: @errors}}
 
   end

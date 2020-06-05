@@ -17,7 +17,7 @@ RSpec.describe SearchService do
     end
 
     it 'returns error when no articles are found' do
-      expect(subject.filter[:data][:errors].length).to eql(1)
+      expect(subject.filter[:error_message].length).to eql(1)
     end
   end
 
@@ -43,6 +43,12 @@ RSpec.describe SearchService do
     it 'deletes old queries' do
       subject.filter
       described_class.new({search: 'hello world', activity: [123213123, 'hel', 'hello', 'hello world'] }, 1231231).filter
+      expect(Query.count).to eql(1)
+    end
+
+    it 'deletes query from old session if text is included' do
+      subject.filter
+      described_class.new({search: 'hello world', activity: [1232133, 'hel', 'hello', 'hello world', 'hello world again'] }, 1231231).filter
       expect(Query.count).to eql(1)
     end
   end
