@@ -15,6 +15,7 @@
 Welcome to the [Simple Search](https://helpjuice-simple-search.herokuapp.com/) codebase. We are so excited to have you.
 
 ## What is Simple Search?
+
 Simple search is an open simple text metching software, which saves users searches and displays them in analytics per user bases.
 
 ## How does it work?
@@ -24,6 +25,8 @@ Simple search will save queries from users session, session is started from the 
 In cases where user executes more than one valid queries in same session ('How to buy product', 'How to sell product') we will save bouth of those queries. In cases when user is typing slow and is sending multiple requests in single query all other queries from users session will be deleted.
 
 Every query will have session identification saved as well as used id (that is comming from users IP address), counter on how many times did user make a same query (here i tought about saving every query and not incrementing them so that I can get when the query was created), boolean on wether we ware able to find the results.
+
+We also clean every query from special caracters and leading or trailing white spaces.
 
 Every user has access to his analytics board which will show total nubmer of ther searches, number of successful as well as unsuccessful searches, and articles count. Also in bottom section user can see his most searched terms, successful and unsuccessful ones. Graph will show number of searches per minute, I understand that it is little bit redundant but since this app will be used and tested in shorter time interval I wanted to plot some sort of graph for you to see.
 

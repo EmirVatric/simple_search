@@ -99,3 +99,37 @@
 .not-found-searches {
   width: 50%;
 }
+
+@media only screen and (max-width: 600px) {
+  .numbers-wrapper {
+    display: block;
+    height: auto;
+  }
+
+  .number-of-searches {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+  }
+
+  .numbers-analytic {
+    height: 120px;
+  }
+
+  .most-searched {
+    display: none;
+  }
+
+  .searches-wrapper {
+    display: block;
+  }
+
+  .found-searches {
+    width: 100%;
+  }
+
+  .not-found-searches {
+    width: 100%;
+  }
+}
