@@ -19,7 +19,9 @@ Simple search is an open simple text metching software, which saves users search
 
 ## How does it work?
 
-Simple search will save queries from users session, session is started from the moment that user starts typing his query until he changes the page (goes to an article or analytics) or clears the input box. In cases where user executes more than one valid queries in same session ('How to buy product', 'How to sell product') we will save bouth of those queries. In cases when user is typing slow and is sending multiple requests in single query all other queries will be deleted.
+Simple search will save queries from users session, session is started from the moment that user starts typing his query until he changes the page (goes to an article or analytics) or clears the input box.
+
+In cases where user executes more than one valid queries in same session ('How to buy product', 'How to sell product') we will save bouth of those queries. In cases when user is typing slow and is sending multiple requests in single query all other queries from users session will be deleted.
 
 Every query will have session identification saved as well as used id (that is comming from users IP address), counter on how many times did user make a same query (here i tought about saving every query and not incrementing them so that I can get when the query was created), boolean on wether we ware able to find the results.
 
