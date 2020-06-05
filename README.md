@@ -1,6 +1,6 @@
 <p align="center">
   <h1 align="center">Simple Search</h1>
-  <p align="center"><strong>Simple search engine with analitics</strong></p>
+  <p align="center"><strong>Simple search engine with analytics</strong></p>
 </p>
 <br>
 <p align="center">
