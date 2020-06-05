@@ -2,15 +2,12 @@
   height: 45px;
   width: 100%;
   background: #ffffff;
-  position: fixed;
-  top: 0;
-  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-ul {
+.navbar-wrapper > ul {
   list-style-type: none;
   width: 250px;
   display: flex;
@@ -19,7 +16,7 @@ ul {
   padding: 0;
 }
 
-li {
+.navbar-wrapper > li {
   display: inline;
   font-size: 15px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",

@@ -3,7 +3,6 @@ class SearchService
     @query = data[:search].gsub(/[^0-9A-Za-z ]/, '')
     @activity = data[:activity]
     @user_id = ip
-    @found = true
     @activity_id = data[:activity].first
     @old_query = Query.find_by(act_identifier: @activity.first)
     @increment_query = Query.find_by(user_id: @user_id, query: @query)
@@ -11,21 +10,21 @@ class SearchService
   end
 
   def filter
+    @results = Article.search(@query).limit(6)
+
     @increment_query.nil? ? create_new_query : increment_query
     
     remove_subqueries if @increment_query.nil? && part_of_session?
-    decrement_query_counter if @increment_query.nil? && !part_of_session? && !@old_query.nil?
+    decrement_query_counter if !part_of_session? && !@old_query.nil?
     
-    load_results
+    return_results
   end
 
   private
 
-  def load_results
-    results = Article.search(@query).limit(6)
-    @errors << "We ware not able to find results for search '#{@query}'" if results.empty?
-
-    return {data: {data: results, errors: @errors}}
+  def return_results
+    @errors << "We ware not able to find results for search '#{@query}'" if @results.blank?
+    return {data: {data: @results, errors: @errors}}
   end
 
   def part_of_session?
@@ -43,7 +42,7 @@ class SearchService
   end
 
   def create_new_query
-    Query.create!(user_id: @user_id, act_identifier: @activity_id, found: @found, query: @query)
+    @new_query = Query.create!(user_id: @user_id, act_identifier: @activity_id, found: !@results.blank?, query: @query)
   end
 
   def increment_query

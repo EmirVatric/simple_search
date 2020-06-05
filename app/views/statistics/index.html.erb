@@ -1,4 +1,58 @@
 <div class="dashboard-wrapper">
-<h1>Emir</h1>
+  <div class='numbers-wrapper'>
+    <div class="number-of-searches">
+      <div class='totlas-searches numbers-analytic'>
+        <div class='header'>
+          Searches
+        </div>
+        <div class='number'>
+          <%=@total_searches%>
+        </div>
+      </div>
+      <div class='successful-searches numbers-analytic'>
+        <div class='header'>
+          Successful searches
+        </div>
+        <div class='number'>
+          <%=@successfull_searches.count%>
+        </div>
+      </div>
+      <div class='unsuccesfull-searches numbers-analytic'>
+        <div class='header'>
+          Unsuccessful searches
+        </div>
+        <div class='number'>
+          <%=@unsuccessfull_searches.count%>
+        </div>
+      </div>
+      <div class="number-of-articles numbers-analytic">
+        <div class='header'>
+          Articles
+        </div>
+        <div class='number'>
+          <%=@total_articles%>
+        </div>
+      </div>
+    </div>
+    
+    <div class="most-searched">
+    </div>
+  </div>
+  <div class='searches-wrapper'>
+    <div class="found-searches">
+       <ul>
+        <% @successfull_searches.reverse.take(7).each do |search|%>
+          <li><%= search.query%> <%= search.counter%></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="not-found-searches">
+    <ul>
+        <% @unsuccessfull_searches.reverse.take(7).each do |search|%>
+          <li><%= search.query%> <%= search.counter%></li>
+        <% end %>
+      </ul>
+      </div>
+  </div>
 </div>
 

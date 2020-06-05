@@ -1,6 +1,62 @@
 .dashboard-wrapper {
-  height: 500px;
   margin: 10px auto;
   max-width: 1300px;
   padding: 0 10px;
+}
+
+.numbers-wrapper {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  height: 300px;
+  margin: 10px 0;
+}
+
+.number-of-searches {
+  width: 30%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.most-searched {
+  width: 70%;
+  margin-left: 10px;
+  background: lightgray;
+  border-radius: 5px;
+}
+
+.numbers-analytic {
+  border-radius: 5px;
+  background: rgb(235, 235, 235);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.numbers-analytic > .number {
+  font-size: 50px;
+}
+
+.numbers-analytic > .header {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.searches-wrapper {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  height: 300px;
+}
+
+.found-searches {
+  width: 50%;
+}
+
+.not-found-searches {
+  width: 50%;
 }
