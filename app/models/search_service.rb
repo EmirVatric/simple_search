@@ -38,20 +38,20 @@ class SearchService
   def part_of_session?
     @query_form_activity.counter == 1 unless @query_form_activity.nil?
   end
-
-  def decrement_query_counter
-    @query_form_activity.update(counter: @query_form_activity.counter - 1, act_identifier: 0)
-  end
-
+  
   def new_query?
     !@query_form_activity.nil? && @query.include?(@query_form_activity.query)
   end
-
+  
   def create_new_query
     @new_query = Query.create!(user_id: @user_id, act_identifier: @session_identifier, found: !@results.blank?, query: @query)
   end
-
+  
   def increment_query
     @increment_query.update(act_identifier: @session_identifier, counter: @increment_query.counter + 1)
+  end
+
+  def decrement_query_counter
+    @query_form_activity.update(counter: @query_form_activity.counter - 1, act_identifier: 0)
   end
 end

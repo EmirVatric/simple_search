@@ -1,5 +1,4 @@
 const appendResults = (data, element) => {
-  console.log(data);
   data.data.forEach((el) => {
     let node = document.createElement("DIV");
     node.classList.add("article");
